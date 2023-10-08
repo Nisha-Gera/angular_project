@@ -1,0 +1,100 @@
+<p>rooms works!</p>
+<!-- binding in angular -->
+<!-- the name is binded through interpolation binding. -->
+<h1>welcome to {{hotelName}}</h1>
+
+<!-- this is an example of property binding where we can bind data using any html property which is valid! -->
+<div [hidden]="hideRooms">
+  <p>No. of rooms</p>
+  <div [innerHTML]="numberOfRoomsAvailable"></div>
+</div>
+
+<!--Null collision operator and optional chaining -->
+<!-- {{room?.availableRooms ?? 'No Rooms'}} -->
+<div *ngIf="selectedRoom" >
+  {{selectedRoom | json}}
+</div> // component communication
+
+<!-- *ngIf Directive -->
+<div *ngIf="room.availableRooms > 0">
+
+  <app-room-list [rooms]="roomList" (selectedRoom) = "selectRoom($event)" ></app-room-list >
+  <!-- {{roomList}} -->
+</div>
+
+<!-- event binding:  -->
+<button (click)="toggle()">Toggle</button>
+
+<!-- Directives:
+Directives are used to change the behaviour and appearance of your DOM element. 
+Directives can implement all lifecycle hooks
+Directives can not have template  -->
+
+<!-- types of Directives
+1. Structural : costlier --they change the behaviour of DOM which may cause performance issues.
+2. Attribute : -->
+
+<!-- built in directives
+
+*ngIf  - this * represent the structural Directive...these are used to add/Remove elmenets in the DOM
+
+*ngFor  - this * represent the structural Directive...these are used to add/Remove elmenets in the DOM
+
+*ngSwitch - this * represent the structural Directive...these are used to add/Remove elmenets in the DOM
+
+ngClass - this is attribute directive , these help in modifying the elements in the DOM
+
+ngStyle - this is attribute directive , these help in modifying the elements in the DOM -->
+
+<!-- ***PIPES***
+1. Pipes are used for data transformation
+2. Pipes don't change actual object -->
+
+<!-- ***BUILT_IN Pipes***
+1. DatePipe
+2. UpperCasePipe
+3. LowerCasePipe
+4. CurrencyPipe
+5. DecimalPipe
+6. PercenPipe
+7. JsonPipe
+8. SlicePipe
+9. AsyncPipe
+10. titlecasePipe -->
+
+<!-- ***LifeCycle Hooks*** 
+#  Components instance has lifecycle hooks which can help you to hook into different events on components.
+#  Lifecycle ends when component is detroyed! -->
+
+<!-- certain available Lifecycle Hooks are: -->
+<!-- 
+  1. ngOnChange
+  2. ngOnInit
+  3. ngDoCheck
+  4. ngAfterContentInit
+  5. ngAfterContentchecked
+  6. ngAfterViewInit
+  7. ngAfterViewChecked
+  8. ngOnDestroy
+ -->
+
+<!-- ***component communication ***-->
+
+<!-- 
+  
+# The Scenario where two or more components needs to interact with eachother is know as component communication
+# there are multiple ways to achieve the component communication
+#we can communicate with other component using three ways
+#1) @Input() and @Output() decorator
+#2) Service Class
+#3) @viewChild and @contentChild decorator
+#) EventEmitter class  //facilitates communication betweeen component
+
+  -->
+
+<!-- ***Change Detection*** -->
+<!-- 
+
+  
+
+ -->
