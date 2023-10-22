@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// hkfehrfehrighruhgugbehgekjhgjkhrktjgh
+
 const routes: Routes = [];
 
 @NgModule({

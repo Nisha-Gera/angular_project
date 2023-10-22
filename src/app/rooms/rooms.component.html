@@ -1,7 +1,8 @@
-<p>rooms works!</p>
 <!-- binding in angular -->
 <!-- the name is binded through interpolation binding. -->
-<h1>welcome to {{hotelName}}</h1>
+<!-- <h1>welcome to {{hotelName}}</h1> -->
+
+<app-header></app-header>
 
 <!-- this is an example of property binding where we can bind data using any html property which is valid! -->
 <div [hidden]="hideRooms">
@@ -11,19 +12,26 @@
 
 <!--Null collision operator and optional chaining -->
 <!-- {{room?.availableRooms ?? 'No Rooms'}} -->
-<div *ngIf="selectedRoom" >
+<div *ngIf="selectedRoom">
   {{selectedRoom | json}}
-</div> // component communication
+</div>
+<!-- component communication -->
+<h1>{{totalByte}} loaded</h1>
+<div><button (click)="addRoom()">ADD Room</button></div>
 
 <!-- *ngIf Directive -->
-<div *ngIf="room.availableRooms > 0">
-
-  <app-room-list [rooms]="roomList" (selectedRoom) = "selectRoom($event)" ></app-room-list >
+<div *ngIf="hideRooms">
+  <app-room-list
+    [rooms]="roomList"
+    (selectedRoom)="selectRoom($event)"
+  ></app-room-list>
   <!-- {{roomList}} -->
 </div>
 
 <!-- event binding:  -->
 <button (click)="toggle()">Toggle</button>
+<button (click)="editRoom()">Edit Room</button>
+<button (click)="deleteRoom()">Delete Room</button>
 
 <!-- Directives:
 Directives are used to change the behaviour and appearance of your DOM element. 
@@ -66,35 +74,105 @@ ngStyle - this is attribute directive , these help in modifying the elements in 
 #  Components instance has lifecycle hooks which can help you to hook into different events on components.
 #  Lifecycle ends when component is detroyed! -->
 
-<!-- certain available Lifecycle Hooks are: -->
+<!-- Certain available Lifecycle Hooks are: -->
 <!-- 
-  1. ngOnChange
+  1. ngOnChanges -- changedetectionstrategy:can only be applied to the component which have input decorator.
   2. ngOnInit
-  3. ngDoCheck
-  4. ngAfterContentInit
-  5. ngAfterContentchecked
-  6. ngAfterViewInit
+  3. ngDoCheck -- must avoid, expensive, hardly using, check every change in the entire page.
+  4. ngAfterContentInit -- <ng-content> is used here
+  5. ngAfterContentChecked
+  6. ngAfterViewInit -- used @viewchild and @viewchilden
   7. ngAfterViewChecked
-  8. ngOnDestroy
+  8. ngOnDestroy -- end of the the component
+
+  NOTE:
+  ngonchanges and ngdocheck should not be applied together on the same compoennt because both are goint to do the same task -- detect changes**
  -->
 
-<!-- ***component communication ***-->
+<!-- ***component communication-- ngOnInit ***-->
 
 <!-- 
-  
+# component communication goes hand in hand with lifecycle hooks.
+
 # The Scenario where two or more components needs to interact with eachother is know as component communication
+
 # there are multiple ways to achieve the component communication
+
 #we can communicate with other component using three ways
+
 #1) @Input() and @Output() decorator
-#2) Service Class
-#3) @viewChild and @contentChild decorator
-#) EventEmitter class  //facilitates communication betweeen component
+#2) Services Class
+#3) @viewChild and @contentChild decorator: 
+#)  EventEmitter class  //facilitates communication betweeen component
 
   -->
 
-<!-- ***Change Detection*** -->
+<!-- ***Change Detection --  ngOnChanges*** -->
 <!-- 
+  by default its "default..and other is push"
+  changeDetection:ChangeDetectionStrategy.push/simply nothing to mak default.......
+ -->
 
-  
+<!-- ***Contect Projection***-->
+<!--   
+  <ng-content></ng-content> is used here with content projection!
+  we can provide a fixed design..and then just write other components!
+  -->
+
+<!-- ***Depending Injection*** -->
+<!-- 
+   # DI not available in other frameworks..
+   # Dependencies are services or objects needed by classes to perform some function.
+   # It is a design pattern.
+   # Angular has built-in dependency injection support.
+    
+   DI Provider:
+   # value providers - with value based provider we use :@injectable, @inject, Injectiontoken instead of directly accesing API , localstorage, services, interfaces.
+
+   # class based provider  
+   # factory
+   -->
+
+<!-- ***Services*** -->
+<!-- 
+   ProvidedIn: root and any
+    #business logic should go into services.
+
+    -->
+<!-- *** Resolution Modifiers/ Decorators: which we use with services*** -->
+<!-- 
+  # Self
+  # SkipSelf
+  # Optional
+  # Host
+ -->
+
+<!-- Component interaction using services:
+
+  # sharing data between multiple components
+  #sharing data within App
 
  -->
+<!-- Angular Http and observables : interactt with API's -->
+<!-- 
+  #introduction
+  #setting up HttpClient
+    -> we need to import HttpClientModule from @angualr/common/http
+    -> once module is imported we can inject HttpClient Service.
+  #using HttpClient service
+  #RxJx , observables and streams --pull and push based architecture
+  #http methods
+  #RxJx operators and their types:
+    =>ShareReplay 
+    =>CatchError
+    =>Map operators
+    
+  #http interceptors
+  #APP_Initializers
+
+  =>in enterprise apps, you need to interact with API,s
+  =>HttpClient is service provided by angulat to interact with API;s
+  =>HttpClient internally uses RxJS
+  =>HttpClient returns an Observable<Response> object    
+  =>
+  -->

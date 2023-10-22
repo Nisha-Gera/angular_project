@@ -1,6 +1,13 @@
 <h1>Hilton Hotel</h1>
-<app-rooms></app-rooms>
+<!-- <div #name ></div> -->
 
+<app-container>
+  <app-rooms></app-rooms>
+  <app-employee></app-employee>
+  <h1>
+    This is ng content!
+  </h1>
+</app-container>
 <!-- ngswitch example -->
 <!-- <div [ngSwitch]="role">
   <div *ngSwitchCase="'user'"><h4>Welcome User!</h4></div>
@@ -9,3 +16,10 @@
   </div>
   <div *ngSwitchDefault><h4>YOu are not authorised to view this page!</h4></div>
 </div> -->
+
+<!--<div>
+  <ng-template #user></ng-template> 
+</div> -->
+<!-- #using this to loead a component dynamically 
+  # ng template -- is a tag which wii=ll never render anthing by its own.
+  #user is a template reference which can be used to refer this element in ts file-->
