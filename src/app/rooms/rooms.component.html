@@ -157,22 +157,28 @@ ngStyle - this is attribute directive , these help in modifying the elements in 
 <!-- 
   #introduction
   #setting up HttpClient
-    -> we need to import HttpClientModule from @angualr/common/http
+    -> we need to import HttpClientModule from @angular/common/http
     -> once module is imported we can inject HttpClient Service.
   #using HttpClient service
   #RxJx , observables and streams --pull and push based architecture
   #http methods
   #RxJx operators and their types:
-    =>ShareReplay 
-    =>CatchError
-    =>Map operators
-    
+    =>ShareReplay -- we cache data only once!
+    =>CatchError--  AsyncPipe , used with handling exception or catching errors
+    =>Map operators - modify data 
+  # subject - rxjs element which is an observer as well as observable
   #http interceptors
   #APP_Initializers
 
-  =>in enterprise apps, you need to interact with API,s
+  =>in enterprise apps, you need to interact with API
   =>HttpClient is service provided by angulat to interact with API;s
   =>HttpClient internally uses RxJS
   =>HttpClient returns an Observable<Response> object    
-  =>
   -->
+
+<!-- HTTP interceptors and APP_INITIALIZERS -->
+<!--
+  =>Allows us to interpret request
+  =>we can change data and add HttpRequestheaders
+  =>APP_INITIALIZERS allows you to injects function  as application startup
+ -->

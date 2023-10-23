@@ -72,7 +72,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
       }
       );
     this.stream.subscribe((data)=>{console.log(data)});
-    this.roomsService.getRooms().subscribe((rooms) => {
+    this.roomsService.getRooms$.subscribe((rooms) => {
       this.roomList = rooms;
     });
   }
@@ -145,3 +145,5 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   }
 
 }
+// getData -> add Data -> getData pull aarchitect ure
+// getData -> continuous stream of Data ->addData
