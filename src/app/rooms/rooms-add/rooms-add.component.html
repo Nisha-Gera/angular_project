@@ -1,0 +1,101 @@
+{{roomsForm.value | json}} {{roomsForm.valid | json}}
+<!-- valid will tell if the form is valid or not -->
+{{roomsForm.invalid | json}} {{roomsForm.pristine | json}} {{roomsForm.dirty |
+json}}
+
+<div *ngif="successMessage !==' ' " class="alert alert-success">
+  {{successMessage}}
+</div>
+
+<form #roomsForm="ngForm" (ngSubmit)="AddRoom(roomsForm)">
+  <!-- #roomsForm -> custom directive -->
+  <div class="form-group">
+    <input
+      placeholder="Enter Room type"
+      class="form-control"
+      type="text"
+      name="roomType"
+      [(ngModel)]="room.roomType"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <input
+      #roomsAmenities="ngModel"
+      class="form-control"
+      type="text"
+      name="amenities"
+      placeholder="Enter amenities"
+      [(ngModel)]="room.amenities"
+      minlength="5"
+      maxlength="20"
+      required
+    />
+  </div>
+  <div class="alert alert-danger" *ngIf=" roomsAmenities.errors?.['minlength']">
+    <p>it shouldbe more than 5 characters</p>
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="roomsAmenities.dirty && roomsAmenities.errors?.['required']"
+  >
+    <p>Please provide some value </p>
+  </div>
+  <div class="form-group">
+    <input
+      placeholder="Enter the price"
+      class="form-control"
+      type="number"
+      name="price"
+      [(ngModel)]="room.price"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <input
+      placeholder="Enter checkInTime"
+      class="form-control"
+      type="datetime"
+      name="checkInTime"
+      [(ngModel)]="room.checkInTime"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <input
+      placeholder="Enter checkOutTime"
+      class="form-control"
+      type="datetime"
+      name="checkOutTime"
+      [(ngModel)]="room.checkOutTime"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <input
+      placeholder="Enter photos url"
+      class="form-control"
+      type="text"
+      name="photos"
+      [(ngModel)]="room.photos"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <input
+      placeholder="Ratings"
+      min="1"
+      max="5"
+      class="form-control"
+      name="rating"
+      type="number"
+      [(ngModel)]="room.rating"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <button [disabled]="roomsForm.invalid" class="btn btn-primary">
+      submit
+    </button>
+  </div>
+</form>

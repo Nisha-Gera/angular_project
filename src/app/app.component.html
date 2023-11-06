@@ -1,14 +1,23 @@
-<h1>Hilton Hotel</h1>
+<!-- <h1>Hilton Hotel</h1> -->
 <!-- <div #name ></div> -->
-<app-rooms></app-rooms>
+<!-- <app-rooms></app-rooms> -->
 
-<app-container>
+<!-- // don't use href to link pages as it forces the page to reload instead of redirecting simply
+<a [href]="'rooms'" >Rooms</a>
+<a [href]="'employee'" >employee</a> -->
+
+<!-- using routerlinks ---  only views change -->
+<app-navigation></app-navigation>
+<a [routerLink]="'employee'">employee</a>
+<a [routerLink]="'rooms'">rooms</a>
+<!-- <router-outlet></router-outlet> -->
+<!-- <app-container>
   <app-rooms></app-rooms>
   <app-employee></app-employee>
   <h1>
     This is ng content!
   </h1>
-</app-container>
+</app-container> -->
 <!-- ngswitch example -->
 <!-- <div [ngSwitch]="role">
   <div *ngSwitchCase="'user'"><h4>Welcome User!</h4></div>

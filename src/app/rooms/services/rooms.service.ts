@@ -4,7 +4,7 @@ import { environment } from 'src/environtment/enironment';
 import { APP_SERVICE_CONFIG } from 'src/app/AppConfig/AppConfig.service';
 import { AppConfig } from 'src/app/AppConfig/AppConfig.interface';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import {shareReplay } from 'rxjs';
+import { shareReplay } from 'rxjs';
 @Injectable({
   providedIn: 'root',
   //root: it means that service is actually registered in the app.module.ts
@@ -12,9 +12,10 @@ import {shareReplay } from 'rxjs';
 })
 export class RoomsService {
   roomList: RoomList[] = [];
-  
-  headers = new HttpHeaders({'token':'234584jghufytr89586596'});
-  getRooms$ = this.http.get<RoomList[]>('/api/rooms',{headers :this.headers,}).pipe(shareReplay(1));
+
+  getRooms$ = this.http
+    .get<RoomList[]>('/api/rooms')
+    .pipe(shareReplay(1));
 
   constructor(
     @Inject(APP_SERVICE_CONFIG) private config: AppConfig,

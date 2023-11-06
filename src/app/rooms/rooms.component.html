@@ -173,12 +173,65 @@ ngStyle - this is attribute directive , these help in modifying the elements in 
   =>in enterprise apps, you need to interact with API
   =>HttpClient is service provided by angulat to interact with API;s
   =>HttpClient internally uses RxJS
-  =>HttpClient returns an Observable<Response> object    
+  =>HttpvClient returns an Observable<Response> object    
   -->
 
 <!-- HTTP interceptors and APP_INITIALIZERS -->
 <!--
   =>Allows us to interpret request
-  =>we can change data and add HttpRequestheaders
-  =>APP_INITIALIZERS allows you to injects function  as application startup
+  =>we can change data and add HttpRequestHeaders
+  =>HTTP-interceptors can modify the request and response but they can't modify the original request/response , they have to clone the req/res.
+  
+  =>APP_INITIALIZERS allows you to injects function  as application startup ---it is used to load the data before the app is initialised.
  -->
+
+ <!-- angular Router -->
+ <!--
+  =>Router is a core feature of Angular application
+  =>We have two ways to navigate through the app
+  1) Programmatic navigation
+  2) Declarative navigation
+  =>Introduction
+    --Provides the functionality to add routes
+    --Developers can configure all the routes at front-end
+    --Provides SPA functionality
+    --Feature to add nested routes
+
+  =>setp router
+    --Import RouterModule
+    --forRoot method allows us to add multiple route config
+    --Default route
+    --Dynamic route
+    --Wild card route -> 404 pagess
+
+  =>Using ActivatedRoute Service
+    --Allows to read the router data.
+    --Allows access to snapshot data.
+    --Allows to access data from Route config.   
+    --params
+    --paramsmap
+
+  =>using Router Service
+  =>Feature Module and Routing
+  =>Lazy loading modules
+  =>Nested Routing and Child routes
+  =>Route Guards
+ -->
+
+ <!-- forms- ->two types: template driven forms and reactive forms -->
+ <!-- 
+  Template driven forms:
+   =>setting up template driven forms
+      --import formsModule to module
+      --in template driven forms we create forms using html tags
+      --good for developers who like to have more control using html
+      --use ngModel for 2 way data binding
+      
+   =>validating forms
+   =>submit and reset forms
+   =>custom pipe demo with forms
+   => writing custom directive
+   =>writing custom validator
+  -->
+
+  

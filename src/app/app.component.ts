@@ -1,5 +1,6 @@
 import { Component, ViewChild, ViewContainerRef,AfterViewInit,ElementRef,OnInit } from '@angular/core';
 import { RoomsComponent } from './rooms/rooms.component';
+import { InitService } from './init.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,9 @@ ngOnInit(): void {
   this.name.nativeElement.innerHTML="I am new Title"
    //dynamically accessed the html element 
   }
-
+constructor(private initService:InitService){
+console.log(initService.config)
+}
 /*   @ViewChild('user', {read:ViewContainerRef}) vcr! : ViewContainerRef;
 //   ngAfterViewInit(): void {
 //     const componentRef  = this.vcr.createComponent(RoomsComponent);
